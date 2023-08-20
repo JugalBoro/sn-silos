@@ -47,8 +47,8 @@ nodejs, mongodb, postman
 
 ### Installation
 Go to sn-silos-master folder in terminal, then 
-1) install packages  : npm i
-2) run server :  npm run server
+### npm i
+### npm run server
 
 
 
