@@ -47,8 +47,8 @@ nodejs, mongodb, postman
 
 ### Installation
 
-1) install packages  : #npm i
-2) run server :  #npm run server
+1) install packages  : ###npm i
+2) run server :  ###npm run server
 
 
 
