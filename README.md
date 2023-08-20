@@ -47,13 +47,13 @@ nodejs, mongodb, postman
 
 ### Installation
 
-1) install packages  : ###npm i
-2) run server :  ###npm run server
+1) install packages  : npm i
+2) run server :  npm run server
 
 
 
 
-
+### Note: .env file is uploaded in github, which is not recommanded at all
 
 
 ## License
