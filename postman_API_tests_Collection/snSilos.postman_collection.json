@@ -1,0 +1,569 @@
+{
+	"info": {
+		"_postman_id": "7593a4a7-8706-4821-8bbb-5b0e6e4d1443",
+		"name": "snSilos",
+		"description": "API documentation User Management, Product Management, Cart Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17455925"
+	},
+	"item": [
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "register_user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n    \"name\":\"jugal30\",\r\n    \"email\":\"jugal30@gmail.com\",\r\n    \"password\":\"123456\"\r\n     \r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						},
+						"description": "- **Method:** POST\n    \n- **Headers:** Content-Type: application/json\n    \n- **Request Body:**json\n    \n\n{ \"name\": \"johndoe\",\n\n\"email\": \"johndoe@example.com\",\n\n\"password\":\"johndoe\"\n\n}\n\n**Response:**\n\n- 201 Created: User profile created successfully.\n    \n- 400 Bad Request: Invalid or missing request body.\n    \n- 401 Unauthorized\n    \n- 500 : Server Error"
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"email\":\"jugal30@gmail.com\",\r\n    \"password\":\"123456\"\r\n     \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						},
+						"description": "- Authenticate a user and obtain an access token by sending a POST request to the `/login` endpoint.\n    \n- **Endpoint:** [http://localhost:3000/api/users/login](http://localhost:3000/api/users/login)\n    \n- **Method:** POST\n    \n- **Request Body:** json\n    \n\n{  \n\"email\": \"johndoe@example.com\",\n\n\"password\":\"johndoe\"  \n}\n\n**Response:**\n\n- 200 OK: Successful login. Returns an access token.\n    \n- 400 Bad Request: Invalid request body or credentials.\n    \n- 401 Unauthorized: Incorrect username or password."
+					},
+					"response": []
+				},
+				{
+					"name": "get-user-details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTI0NzdlNGFhNjk5MDc0ODJhYzI4YyIsImlhdCI6MTY5MjU1MTA2NiwiZXhwIjoxNjk1MTQzMDY2fQ.botbPtoFN0GtENh8fxtcBkjFpYZ7PE7yxEeR7uUbLLM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						},
+						"description": "Retrieve user details by sending a GET request to the `/profile` endpoint.\n\n**Endpoint:** [http://localhost:3000/api/users/profile](http://localhost:3000/api/users/profile)\n\n**Method:** GET\n\n**Headers:**\n\n- Authorization: Bearer Your_Access_Token_Value\n    \n\n**Response:**\n\n- 200 OK: Successful retrieval of user details.\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to access user details."
+					},
+					"response": []
+				},
+				{
+					"name": "update-user-details",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTI0NzdlNGFhNjk5MDc0ODJhYzI4YyIsImlhdCI6MTY5MjU1MTA2NiwiZXhwIjoxNjk1MTQzMDY2fQ.botbPtoFN0GtENh8fxtcBkjFpYZ7PE7yxEeR7uUbLLM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n    \"name\":\"jugal21\",\r\n    \"email\":\"jugal21@gmail.com\"\r\n   \r\n     \r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						},
+						"description": "- Update user details by sending a PUT request to the `/`[profile](http://localhost:3000/api/profile) endpoint.\n    \n- **Endpoint:** [http://localhost:3000/api/profile](http://localhost:3000/api/profile)\n    \n- **Method:** PUT\n    \n- **Headers:**  \n    Content-Type: application/json\n    \n\nAuthorization: Bearer Your_Access _Token\n\n**Request Body:**\n\n{     \n\n \"name\":\"jugal14\",   \n\n \"email\":\"jugal14@gmail.com\"     \n\n  }  \n\n**Response:**\n\n- 200 OK: Successful update of user details.\n    \n- 400 Bad Request: Invalid request body or data.\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to update user details."
+					},
+					"response": []
+				}
+			],
+			"description": "● Register a new user.  \n● Authenticate user login.  \n● Retrieve user profile.  \n● Update user profile."
+		},
+		{
+			"name": "Product Management",
+			"item": [
+				{
+					"name": "fetch-all-products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTEzMzMyYzRhNTMwM2Q3MDI0NWQxNSIsImlhdCI6MTY5MjQ5Mzg3NiwiZXhwIjoxNjk1MDg1ODc2fQ.2hQEHsu9wGklolsOnYuelca8GMaearByoaqNRXeJT9k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTI0NzdlNGFhNjk5MDc0ODJhYzI4YyIsImlhdCI6MTY5MjU1MTA2NiwiZXhwIjoxNjk1MTQzMDY2fQ.botbPtoFN0GtENh8fxtcBkjFpYZ7PE7yxEeR7uUbLLM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						},
+						"description": "StartFragment\n\nRetrieve a list of all products by sending a GET request to the `/products` endpoint.\n\n**Endpoint:** [http://localhost:3000/api/products/](http://localhost:3000/api/products/)\n\n**Method:** GET\n\n**Response:**\n\n- 200 OK: Successful retrieval of products list.\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to access product data."
+					},
+					"response": []
+				},
+				{
+					"name": "fetch-single-product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/products/_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"_id"
+							]
+						},
+						"description": "- Retrieve a single product's details by sending a GET request to the [/products](http://localhost:3000/api/products/64e13332c4a5303d70245d1c)`/_id`endpoint.\n    \n\n**Endpoint:** [http://localhost:3000/api/products](http://localhost:3000/api/products/64e13332c4a5303d70245d1c)`/_id`\n\n**Method:** GET\n\n**URL Parameters:**\n\n- `_id` (integer, required) - The unique identifier of the product.\n    \n\n**Response:**\n\n- 200 OK: Successful retrieval of the product details.\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to access product data.\n    \n- 404 Not Found: Product with the specified ID not found."
+					},
+					"response": []
+				},
+				{
+					"name": "delete-product",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/products/delete/_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"delete",
+								"_id"
+							]
+						},
+						"description": "Delete a product by sending a DELETE request to the `/delete/_id` endpoint.\n\n**Endpoint:** [http://localhost:3000/api/products/delete/](http://localhost:3000/api/products/delete/64e13332c4a5303d70245d1b)`product_id`\n\n**Method:** DELETE\n\n**URL Parameters:**\n\n- `_id` (integer, required) - The unique identifier of the product to be deleted.\n    \n\n**Headers:**\n\n- Authorization: Bearer Your_Access_Token\n    \n\n**Response:**\n\n- 200 Ok:Product removed\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to delete a product.\n    \n- 404 Not Found: Product with the specified ID not found."
+					},
+					"response": []
+				},
+				{
+					"name": "update-product",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"flipkart echo\",    \r\n    \"price\" : \"100\",\r\n    \"description\" : \"de11\",\r\n    \"image\" :    \"https:hjhdjd\",\r\n    \"brand\" : \"flipkart\",\r\n    \"category\" : \"soundbox\",\r\n    \"countInStock\" : \"66\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/update/_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"update",
+								"_id"
+							]
+						},
+						"description": "Update a product's details by sending a PATCH request to the `/update/_id` endpoint.\n\n**Endpoint:** [http://localhost:3000/api/products/update/](http://localhost:3000/api/products/update/64e13332c4a5303d70245d18)`_id`\n\n**Method:** PATCH\n\n**URL Parameters:**\n\n- `_id` (integer, required) - The unique identifier of the product to be updated.\n    \n\n**Headers:**\n\n- Content-Type: application/json\n    \n- Authorization: Bearer Your_Access_Token\n    \n\n  \n\n**Response:**\n\n- 200 OK: Successful update of the product details.\n    \n- 400 Bad Request: Invalid request body or data.\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to update a product.\n    \n- 404 Not Found: Product with the specified ID not found."
+					},
+					"response": []
+				},
+				{
+					"name": "create-new-product",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"toothbrash\",\r\n    \"price\":\"10\",\r\n    \"description\":\"test 22 1\",\r\n    \"countInStock\":\"11\"\r\n \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/createProduct/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"createProduct",
+								""
+							]
+						},
+						"description": "Create a new product by sending a POST request to the `/createProduct` endpoint.\n\n**Endpoint:** [http://localhost:3000/api/products/createProduct/](http://localhost:3000/api/products/createProduct/)\n\n**Method:** POST\n\n**Headers:**\n\n- Content-Type: application/json\n    \n- Authorization: Bearer Your_Access_Token\n    \n\n**Request Body:**\n\n``` json\n{\n    \"name\":\"phone\",\n    \"price\":\"1111\",\n    \"description\":\"test product 1\",\n    \"countInStock\":\"11\"\n \n}\n\n ```\n\n**Response:**\n\n- 201 Created: Successful creation of the new product.\n    \n- 400 Bad Request: Invalid request body or data.\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to create a product."
+					},
+					"response": []
+				}
+			],
+			"description": "● Create a new product.  \n● Retrieve a list of products.  \n● Retrieve a single product by ID.  \n● Update a product.  \n● Delete a product.",
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cart Management",
+			"item": [
+				{
+					"name": "add-item-to-cart",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderItems\":{\r\n        \"name\":\"flipkart echo\",\r\n        \"qty\":\"21\",\r\n        \"price\":\"300\",\r\n        \"product\":\"64e13332c4a5303d70245d1d\"\r\n    },\r\n\r\n    \"totalPrice\":\"800\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						},
+						"description": "- Add an item to the user's cart by sending a POST request to the `/orders` endpoint.\n    \n- **Endpoint:** [http://localhost:3000/api/orders/](http://localhost:3000/api/orders/)\n    \n- **Method:** POST\n    \n- **Headers:**\n    \n    - Content-Type: application/json\n        \n    - Authorization: Bearer Your_Access_Token\n        \n\n**Request Body:**\n\n``` json\n{\n    \"orderItems\":{\n        \"name\":\"Shij\",\n        \"qty\":\"1\",\n        \"price\":\"40000\",\n        \"product\":\"64e13332c4a5303d70245d18\"\n    },\n\n    \"totalPrice\":\"40000\"\n}\n\n ```\n\n**Response:**\n\n- 200 OK: Successful addition of the item to the cart.\n    \n- 400 Bad Request: Invalid request body or data.\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to add items to the cart."
+					},
+					"response": []
+				},
+				{
+					"name": "get-items-cart",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/orders/myorders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"myorders"
+							]
+						},
+						"description": "- Retrieve items in the user's cart by sending a GET request to the `/myorders` endpoint.\n    \n- **Endpoint:** [http://localhost:3000/api/orders/myorders](http://localhost:3000/api/orders/myorders)\n    \n- **Method:** GET\n    \n- **Headers:**\n    \n\nAuthorization: Bearer Your_Access_Token\n\n- **Response:**\n    \n    - 200 OK: Successful retrieval of items in the cart.\n        \n    - 401 Unauthorized: Access token is missing or invalid.\n        \n    - 403 Forbidden: Insufficient privileges to access cart items."
+					},
+					"response": []
+				},
+				{
+					"name": "delete-item-cart",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/orders/delete/_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"delete",
+								"_id"
+							]
+						},
+						"description": "- Remove an item from the user's cart by sending a DELETE request to the `/delete/_id` endpoint.\n    \n- **Endpoint:** [http://localhost:3000/api/orders/delete](http://localhost:3000/api/orders/delete/64e179f8b4850f1e20217bd4)`/_id`\n    \n- **Method:** DELETE\n    \n- **URL Parameters:**\n    \n\n`_id` (integer, required) - The unique identifier of the item to be removed from the cart.  \n\n**Headers:**\n\n- Authorization: Bearer Your_Access_Token\n    \n\n**Response:**\n\n- 204 No Content: Successful removal of the item from the cart.\n    \n- 401 Unauthorized: Access token is missing or invalid.\n    \n- 403 Forbidden: Insufficient privileges to remove items from the cart.\n    \n- 404 Not Found: Item with the specified ID not found in the cart."
+					},
+					"response": []
+				}
+			],
+			"description": "● Add a product to the user's cart.  \n● Remove a product from the user's cart.  \n● Retrieve the user's cart with the list of products."
+		},
+		{
+			"name": "bonus-tasks",
+			"item": [
+				{
+					"name": "search-product-",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"name\": \"Shij\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagination",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
